@@ -14,6 +14,10 @@ class DateReplacer:
             # detect character typed，put to current_input
             self.current_input += key.char
         except AttributeError:
+        # Some keys have no char, ignore
+            pass
+        except TypeError:
+        # Some keys may be None, ignore
             pass
 
         # check if command in current_input
