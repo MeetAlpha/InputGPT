@@ -4,13 +4,13 @@ from ai_model import AI
 
 # type :date, and replace it to the date today
 class KeyBoardListener:
-    def __init__(self, buffer_max_size, api_key, address, temperature, model, system_role):
+    def __init__(self, api_key, address, temperature, model, system_role):
         self.keyboard = Controller()
         self.command_name = ';name'
         self.command_clipboard = ';clipboard'
         self.command_respond = ';respond'
         self.input_buffer = ''
-        self.buffer_max_size = buffer_max_size
+        self.buffer_max_size = 50
         self.ai_model = AI(api_key, address, temperature, model,system_role)
 
     def on_key_release(self, key):

@@ -3,7 +3,7 @@ import config_handler
 
 def main():
     config = config_handler.load_config()
-    listener = KeyBoardListener(**config, buffer_max_size = 50)
+    listener = KeyBoardListener(**config)
     listener.run()
 
     
