@@ -1,19 +1,22 @@
 import openai
+from conversation_handler import ConversationHandler
 class AI:
-    def __init__(self, api_key, address, temperature, model, system_role):
+    def __init__(self, api_key, address, temperature=1.0, model='gpt-3.5-turbo', system_role='A helpful assistant', history_table=None):
         self.api_key = api_key
         self.address = address
         self.temperature = temperature
         self.model = model
-        self.context = [{"role": "system", "content": system_role}]
         openai.api_key = api_key
         openai.api_base = address
+        self.conversation_handler = ConversationHandler(history_table, {"role": "system", "content": system_role})
+        self.context = self.conversation_handler.to_context()
     
     def respond(self,command: str, content: str, keyboard):
         # Add the current question to chat history list
         # You MUST send the ENTIRE chat history to API if you want it to respond based on the previous conversation.
-        self.context.append({"role": "user", "content": command + content})
-        
+        user_msg = {"role": "user", "content": command + content}
+        self.context.append(user_msg)
+        self.conversation_handler.add_and_write(user_msg)
         # request the stream response, which is word by word, not response as a whole
         response = openai.ChatCompletion.create(  
             model = self.model,
@@ -21,7 +24,7 @@ class AI:
             messages = self.context,
             n = 1, # respond with only one answer
             temperature=self.temperature,
-            max_tokens=150,
+            # max_tokens=150,
             stream=True,
         )
 
@@ -33,4 +36,7 @@ class AI:
             collected_response += msg  # append the chunk
             print(msg,end='')
             keyboard.type(msg)  # type each chunk
-        self.context.append({"role": "assistant", "content": collected_response})
+        print('\n')
+        assist_msg = {"role": "assistant", "content": collected_response}
+        self.context.append(assist_msg)
+        self.conversation_handler.add_and_write(assist_msg) # Add message and write to db file
