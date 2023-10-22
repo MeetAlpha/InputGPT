@@ -2,16 +2,16 @@ import pyperclip
 from pynput.keyboard import Key, Controller, Listener
 from ai_model import AI
 
-# type :date, and replace it to the date today
+
 class KeyBoardListener:
-    def __init__(self, api_key, address, temperature, model, system_role):
+    def __init__(self, ai_model):
         self.keyboard = Controller()
         self.command_name = ';name'
         self.command_clipboard = ';clipboard'
         self.command_respond = ';respond'
         self.input_buffer = ''
         self.buffer_max_size = 50
-        self.ai_model = AI(api_key, address, temperature, model,system_role)
+        self.ai_model = ai_model
 
     def on_key_release(self, key):
         # If input_buffer is too long, clear it to save checking time
@@ -57,5 +57,3 @@ class KeyBoardListener:
         with Listener(on_release=self.on_key_release) as listener:
             print("Listnening Keyboard...")
             listener.join()
-
-    
