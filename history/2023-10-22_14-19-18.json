@@ -1,0 +1,26 @@
+[
+    {
+        "role": "system",
+        "content": "A helpful assistant"
+    },
+    {
+        "timestamp": 1697955584,
+        "role": "user",
+        "content": "1+1=?"
+    },
+    {
+        "timestamp": 1697955586,
+        "role": "assistant",
+        "content": "1+1 is equal to 2."
+    },
+    {
+        "timestamp": 1697955601,
+        "role": "user",
+        "content": "What is the last question I asked?"
+    },
+    {
+        "timestamp": 1697955603,
+        "role": "assistant",
+        "content": "The last question you asked was \"1+1=?\""
+    }
+]
