@@ -1,0 +1,42 @@
+[
+    {
+        "shortcut": ";respond",
+        "type": "prompt",
+        "prompt": "Respond to this."
+    },
+    {
+        "shortcut": ";explain",
+        "type": "prompt",
+        "prompt": "Explain the code in detail."
+    },
+    {
+        "shortcut": ";debug",
+        "type": "prompt",
+        "prompt": "I have problem with this code, what is wrong?"
+    },
+    {
+        "shortcut": ";document",
+        "type": "prompt",
+        "prompt": "Generate the document of this code."
+    },
+    {
+        "shortcut": ";code",
+        "type": "prompt",
+        "prompt": "Generate the code according to the requirement."
+    },
+    {
+        "shortcut": ";test",
+        "type": "prompt",
+        "prompt": "Generate the test case of this code."
+    },
+    {
+        "shortcut": ";translate",
+        "type": "prompt",
+        "prompt": "Translate into Chinese."
+    },
+    {
+        "shortcut": ";name",
+        "type": "replace",
+        "text": "My name is Alice."
+    }
+]
