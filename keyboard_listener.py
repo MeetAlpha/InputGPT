@@ -26,18 +26,7 @@ class KeyBoardListener:
         except TypeError: # Some keys may be None, ignore
             pass
         
-        # check if command in current_input
-        # if self.command_name in self.input_buffer:
-        #     self.replace_command_with_text(self.command_name,"Name is Alice")
-        # elif self.command_clipboard in self.input_buffer:
-        #     clipboard_content = pyperclip.paste()
-        #     self.replace_command_with_text(self.command_clipboard,clipboard_content)
-        # elif self.command_respond in self.input_buffer:
-        #     self.delete_last_n_characters(len(self.command_respond))
-        #     clipboard_content = pyperclip.paste()
-        #     # call GPT model to respond
-        #     self.ai_model.respond('',clipboard_content,self.keyboard)
-        #     self.input_buffer = ''
+
         matched_rule_idx = self.match(self.input_buffer, self.rules)
         if matched_rule_idx == -1: # No match
             return
