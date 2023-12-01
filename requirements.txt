@@ -1,2 +1,2 @@
 pynput
-openai
+openai==1.3.5
